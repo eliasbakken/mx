@@ -102,7 +102,6 @@ clutter_stage_wayland_get_shell_surface (ClutterStage *stage);
 struct wl_input_device *
 clutter_input_device_wayland_get_input_device (ClutterInputDevice *device);
 
-
 static gboolean
 _resize_grip_button_press_event_cb (ClutterActor    *actor,
                                     ClutterEvent    *event,
@@ -111,14 +110,13 @@ _resize_grip_button_press_event_cb (ClutterActor    *actor,
   MxWindowWaylandPrivate *priv = window->priv;
   ClutterStage *stage = mx_window_get_clutter_stage (priv->window);
   struct wl_shell_surface *shell_surface;
-  struct wl_input_device *input_device;
+  struct wl_seat *seat;
 
   shell_surface = clutter_wayland_stage_get_wl_shell_surface (stage);
-  input_device =
-    clutter_wayland_input_device_get_wl_input_device (event->button.device);
+  seat = clutter_wayland_input_device_get_wl_seat (event->button.device);
 
   wl_shell_surface_resize (shell_surface,
-                           input_device,
+                           seat,
                            event->button.time,
                            WL_SHELL_SURFACE_RESIZE_BOTTOM_RIGHT);
 
@@ -133,13 +131,12 @@ _toolbar_button_press_event_cb (ClutterActor    *actor,
   MxWindowWaylandPrivate *priv = window->priv;
   ClutterStage *stage = mx_window_get_clutter_stage (priv->window);
   struct wl_shell_surface *shell_surface;
-  struct wl_input_device *input_device;
+  struct wl_seat *seat;
 
   shell_surface = clutter_wayland_stage_get_wl_shell_surface (stage);
-  input_device =
-    clutter_wayland_input_device_get_wl_input_device (event->button.device);
+  seat = clutter_wayland_input_device_get_wl_seat (event->button.device);
 
-  wl_shell_surface_move (shell_surface, input_device, event->button.time);
+  wl_shell_surface_move (shell_surface, seat, event->button.time);
 
   return FALSE;
 }
