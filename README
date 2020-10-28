@@ -5,8 +5,9 @@ Prerequisites for Debian Buster:
 apt install gnome-common gtk-doc-tools libclutter-1.0-dev libgirepository1.0-dev
 
 Configure for aarch64:
-./configure --prefix=/usr --libdir=/usr/lib/aarch64-linux-gnu --enable-introspection=yes --with-winsys=wayland
-
+./autogen.sh --prefix=/usr --libdir=/usr/lib/aarch64-linux-gnu --enable-introspection=yes --with-winsys=wayland
+make
+make install
 
 Mx Toolkit
 ==========
