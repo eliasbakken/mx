@@ -1,0 +1,5 @@
+mx (2.0-1) UNRELEASED; urgency=medium
+
+  * Adding deb packaging
+
+ -- Elias Bakken <elias@iagent.no>  Sun, 1 Nov 2020 14:19:39 +0000

@@ -1,0 +1,66 @@
+Source: mx
+Section: libs
+Priority: optional
+Maintainer: Elias Bakken <elias@iagent.no>
+Build-Depends: autoconf,
+               automake,
+               autotools-dev,
+               cdbs (>= 0.4.93~),
+               debhelper (>= 9),
+               dh-autoreconf,
+               gir1.2-clutter-1.0,
+               gir1.2-json-1.0,
+               gobject-introspection (>= 0.10.0),
+               libclutter-1.0-dev,
+               libdbus-glib-1-dev,
+               libgirepository1.0-dev (>= 0.10.0),
+               libtool,
+Standards-Version: 3.9.5
+Homepage: http://www.clutter-project.org/
+
+Package: libmx-2.0-0
+Section: libs
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}
+Multi-Arch: same
+Description: Mx is a widget toolkit using Clutter that provides a set of standard interface
+ elements, including buttons, progress bars, scroll bars and others. It also
+ implements some standard  managers. One other interesting feature is the
+ possibility setting style properties from a CSS format file.
+
+Package: libmx-dev
+Section: libdevel
+Architecture: any
+Depends: autotools-dev,
+         gir1.2-mx-2.0-0 (= ${binary:Version}),
+         libclutter-1.0-dev,
+         libmx-2.0-0 (= ${binary:Version}),
+         ${misc:Depends}
+Description:  Mx is a widget toolkit using Clutter that provides a set of standard interface
+ elements, including buttons, progress bars, scroll bars and others. It also
+ implements some standard  managers. One other interesting feature is the
+ possibility setting style properties from a CSS format file.
+ .
+ This package contains the development files.
+
+Package: libmx-2.0-0-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: libmx-2.0-0 (=${binary:Version}), ${misc:Depends}
+Multi-Arch: same
+Description: Mx is a widget toolkit using Clutter that provides a set of standard interface
+ elements, including buttons, progress bars, scroll bars and others. It also
+ implements some standard  managers. One other interesting feature is the
+ possibility setting style properties from a CSS format file.
+ .
+ This package contains the debug symbols
+
+Package: gir1.2-mx-2.0-0
+Architecture: any
+Section: introspection
+Depends: ${gir:Depends}, ${misc:Depends}, ${shlibs:Depends}
+Description: GObject introspection data for the libmx library
+ This package can be used by other packages using the GIRepository format
+ to generate dynamic bindings for libmx.
